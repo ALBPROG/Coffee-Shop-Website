@@ -1,0 +1,81 @@
+{
+   "coffee":[
+      {
+         "name":"caffee latte",
+         "price":"2.95",
+         "desc":"Espresso mixed with hot or steamed milk"
+      },
+      {
+         "name":"caffee mocha",
+         "price":"3.50",
+         "desc":"Espresso with cream, and Whippead Cream"
+      },
+      {
+         "name":"caffee americano",
+         "price":"2.95",
+         "desc":"Espresso Shots and Light Layer of Cream"
+      },
+      {
+         "name":"capuccino",
+         "price":"2.95",
+         "desc":"Espresso, and Smoothed Layer of Foam"
+      },
+      {
+         "name":"iced caffee mocha",
+         "price":"2.95",
+         "desc":"Espresso, bittersweet mocha sauce, milk and ice"
+      },
+      {
+         "name":"iced smoked mocha",
+         "price":"3.50",
+         "desc":"Espresso, ice, with smoked butterscotch"
+      },
+      {
+         "name":"iced caramel latte",
+         "price":"4.50",
+         "desc":"Espresso, Milk, Ice and Caramel Sauce"
+      }
+   ],
+   "food":[
+      {
+         "name":"grilled chicken sandwich",
+         "price":"12.95",
+         "desc":"breaded chicken or cauliflower hummus \u0003pickles caramelized onions & sriracha"
+      },
+      {
+         "name":"turkey breast sandwich",
+         "price":"8.50",
+         "desc":"Roasted golden brown edged turkey breast"
+      },
+      {
+         "name":"meatball marinara sandwich",
+         "price":"9.95",
+         "desc":"Italian seasoned meatballs served hot in a \u0003zesty marinara sauce."
+      },
+      {
+         "name":"veggie sub",
+         "price":"5.95",
+         "desc":"Veggie burger topped with choice of fresh vegetables."
+      },
+      {
+         "name":"cheese sub",
+         "price":"5.50",
+         "desc":"Steak with onions, peppers and your choice of sauce."
+      },
+      {
+         "name":"biscuits",
+         "price":"3.50",
+         "desc":null
+      },
+      {
+         "name":"Apple pie",
+         "price":"3.50",
+         "desc":null
+      },
+      {
+         "name":"Cookies",
+         "price":"1.50",
+         "desc":null
+      }
+   ]
+}

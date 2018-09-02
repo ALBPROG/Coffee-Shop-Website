@@ -1,0 +1,84 @@
+---
+title: homepage
+slogan: Enjoy a delicious Cup of coffee
+---
+
+<div class="container">
+    <main class="main-content page-{{title}}">
+        <div class="about-us-homepage">
+            <h2 class="heading-title">learn more <span>about us</span></h2>
+            <p>Nunc blandit consectetur velit, vitae fringilla est dapibus a. Aliquam erat volutpat. Aenean at purus sit amet dui suscipit vulputate. Nunc tincidunt id ex a accumsan. Suspendisse consectetur posuere ipsum nec faucibus. Mauris sagittis massa in diam mollis mollis. Sed varius tellus eget lobortis condimentum. Suspendisse vitae turpis magna. Sed et suscipit justo, vitae mollis dolor. Quisque vel interdum est.</p>
+            
+            <div class="category-icons">
+                <div class="icon coffee">
+                    <h3>Coffee</h3>
+                </div>
+                <div class="icon dessert">
+                    <h3>Desserts</h3>
+                </div>
+                <div class="icon tea">
+                    <h3>Tea</h3>
+                </div>
+            </div> <!--.category-icons-->
+        </div><!--.about-us-homepage-->
+    </main>
+</div>    
+
+<div class="container">
+    <div class="main-content page-{{title}}">
+        {{> our_gallery}}
+    </div>
+</div>
+
+{{> our_menu}}
+
+<div class="container testimonials">
+    <h2 class="heading-title">what our clients say<span>testimonials</span></h2>
+    <div class="slide-container">
+        
+            <div class="orbit" role="region" aria-label="Our Testimonials" data-orbit>
+                <div class="orbit-wrapper">
+                    <div class="orbit-controls">
+                            <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                            <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                    </div> <!--.orbit-controls-->
+                    <ul class="orbit-container">
+                        <li class="is-active orbit-slide">
+                                <div>
+                                    <p>Suspendisse at interdum ex, eget lacinia risus. Curabitur efficitur tortor vel dui consectetur elementum. Proin eget congue metus, id sodales diam.</p>
+                                    <h3>- Olti Asllanaj</h3>
+                                </div>
+                        </li>
+                        <li class="orbit-slide">
+                                <div>
+                                    <p>Suspendisse at interdum ex, eget lacinia risus. Curabitur efficitur tortor vel dui consectetur elementum. Proin eget congue metus, id sodales diam.</p>
+                                    <h3>- Olti Asllanaj</h3>
+                                </div>
+                        </li>
+                        <li class="orbit-slide">
+                                <div>
+                                    <p>Suspendisse at interdum ex, eget lacinia risus. Curabitur efficitur tortor vel dui consectetur elementum. Proin eget congue metus, id sodales diam.</p>
+                                    <h3>- Olti Asllanaj</h3>
+                                </div>
+                        </li>
+                        <li class="orbit-slide">
+                                <div>
+                                    <p>Suspendisse at interdum ex, eget lacinia risus. Curabitur efficitur tortor vel dui consectetur elementum. Proin eget congue metus, id sodales diam.</p>
+                                    <h3>- Olti Asllanaj</h3>
+                                </div>
+                        </li>
+                    </ul>
+                </div><!--.orbit-wrapper-->
+            </div><!--.orbit-->
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+

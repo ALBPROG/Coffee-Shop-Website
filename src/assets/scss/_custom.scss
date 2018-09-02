@@ -1,0 +1,611 @@
+// Fade effect mixin
+@mixin faded_black() {
+    background: linear-gradient(to bottom, rgba(0,0,0,.7) 20% , rgba(0,0,0,.3)  );
+}
+@mixin background_image($page) {
+    background-image: url(../img/featured/small/#{$page}.jpg);
+    @include breakpoint(medium) {
+        background-image: url(../img/featured/medium/#{$page}.jpg);
+    }
+    @include breakpoint(large) {
+        background-image: url(../img/featured/large/#{$page}.jpg);
+    }
+}
+
+// Bellefair Font
+$bellefair: 'Bellefair', serif;
+
+.container {
+    @include xy-grid-container();
+}
+.main-content {
+    background-color: $white;
+    padding: rem-calc(5);
+    @include breakpoint(medium) {
+        margin-top: rem-calc(-120);
+        position: relative;
+        padding: rem-calc(50 80);
+    }
+}
+.site-header {
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    background-attachment: scroll;
+    @include breakpoint(large) {
+        background-attachment: fixed;
+    }
+
+    &.homepage {
+        @include background_image(home);
+    }
+    &.about {
+        @include background_image(about);
+    }
+    &.process {
+        @include background_image(process);
+    }
+    &.menu {
+        @include background_image(menu);
+    }
+    &.gallery {
+        @include background_image(gallery);
+    }
+    &.contact {
+        @include background_image(contact);
+    }
+    .header-content {
+        padding-top: rem-calc(30);
+        .top-section {
+            @include xy-grid();
+            @include flex-align(center, top);
+            position: relative;
+            z-index: 1;
+            
+            .logo {
+                @include xy-cell(6);
+                @include flex-align(center, middle);
+                @include breakpoint(medium) {
+                    @include xy-cell(25%);
+                }
+                
+            }
+
+        }
+        .bottom-section {
+            @include margin(1);
+            @include breakpoint(medium) {
+                height: rem-calc(230);
+                @include flex();
+                @include flex-align(center, bottom);
+            }
+            .slogan {
+                color: $white;
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                @include font-bold(900);
+                @include text-transform(uppercase);
+            }
+        }
+    }
+    
+    &:after {
+        @include faded_black();
+        @include position(absolute, 0,0,0,0);
+        content: '';
+        @include box(100%, 100%);
+    }
+}
+
+.menus {
+    @include xy-cell();
+    @include breakpoint(medium) {
+        @include xy-cell(auto);
+    }
+    // Social Menu
+    .social-menu {
+        @include menu-base();
+        @include flex-align(center, middle);
+        @include breakpoint(medium) {
+            @include flex-align(right, middle);
+        }
+        a {
+            &:before {
+                display: inline-block;
+                font-family: 'Fontawesome';
+                font-size: rem-calc(30);
+                color: $white;
+                -webkit-font-smoothing: antialiased;
+                content: '\f08e';
+            }
+            &[href*="facebook.com"]::before { content: '\f082'; }
+            &[href*="twitter.com"]::before { content: '\f099'; }
+            &[href*="instagram.com"]::before { content: '\f16d'; }
+            &[href*="youtube.com"]::before { content: '\f16a'; }
+            
+        }
+    }
+    .title-bar {
+        background-color: darken($primary-color, 10);
+    }
+    
+    // Main Navigation for Interior pages
+    .main-navigation {
+        @include menu-base();
+        @include flex-align(right, middle);
+        @include breakpoint(small only) {
+            background-color: $primary-color;
+        }
+        
+        li {
+            @include breakpoint(small only) {
+                width: 100%;
+                text-align: center;
+            }
+            a {
+                @include text-transform(uppercase);
+                @include font-bold(700);
+                font-size: rem-calc(16);
+                
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+// Animation Menus
+
+.menu-in {
+    @include mui-zoom(in, .1, 1 );
+}
+.menu-out {
+    @include mui-zoom(out, 1, .1, true, .5s, ease)
+}
+
+.reveal-in {
+    @include mui-fade();
+}
+.reveal-out {
+    @include mui-fade(out, 1, 0);
+}
+// Index Page - About
+.about-us-homepage {
+    @include breakpoint(medium) {
+        @include xy-cell(80%);
+        @include xy-cell-offset(10%);
+    }
+    p {
+        text-align: center;
+        line-height: rem-calc(40);
+        font-size: rem-calc(18);
+    }
+    
+    .category-icons {
+        @include xy-grid();
+        margin-bottom: rem-calc(50);
+        .icon {
+            @include xy-cell();
+            @include breakpoint(medium) {
+                @include xy-cell(1 of 3);
+            }
+            height: rem-calc(260);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size:rem-calc(120%);
+            @include flex();
+            @include flex-align(center, bottom);
+            &.coffee {
+                background-image: url(../img/icon_coffee.svg);
+            }
+            &.dessert {
+                background-image: url(../img/icon_dessert.svg);
+            }
+            &.tea {
+                background-image: url(../img/icon_tea.svg);
+            }
+            h3 {
+                text-align: center;
+                font-family: $bellefair;
+                color: $primary-color;
+                font-size: rem-calc(38);
+            }
+        }
+    }
+}
+
+// Footer 
+.site-footer {
+    background-color: $primary-color;
+    .container {
+        background-color: $white;
+        .footer-content {
+            @include xy-grid();
+            @include padding(2, 2, 4, 2);
+            .footer-box {
+                @include xy-cell();
+                @include breakpoint(small only) {
+                    margin-bottom: rem-calc(10);
+                }
+                @include breakpoint(medium) {
+                    @include xy-cell(4);
+                }
+                text-align: center;
+                h3 {
+                    color:$secondary-color;
+                    font-family: $bellefair;
+                    @include text-transform(uppercase);
+                }
+                p {
+                    margin:0;
+                }
+            }
+        }
+    }
+    .copyright {
+        margin:0;
+        color: $white;
+        text-align: center;
+        font-size:rem-calc(18);
+        @include padding(1, null, 1, null);
+        @include font-bold(900);
+    }
+}
+
+.heading-title {
+    color: $secondary-color;
+    text-align: center;
+    @include font-bold(900);
+    @include text-transform(uppercase);
+    font-size:rem-calc(18);
+    margin-bottom: rem-calc(100);
+    margin-top: rem-calc(40);
+    width: 100%;
+    span {
+        color: $primary-color;
+        font-size: rem-calc(38);
+        display: table;
+        margin:0 auto;
+    }
+    &:after {
+        content: '';
+        @include box(rem-calc(80), rem-calc(80));
+        background-image:url(../img/coffee.svg);
+        background-size: rem-calc(80);
+        background-repeat: no-repeat;
+        @include horizontal-center();
+        margin-top:rem-calc(-15);
+    }
+}
+/** Internal Pages **/
+/** About Us **/
+main.page-about {
+    @include xy-grid();
+    @include flex-align(justify,top);
+    .image {
+        @include xy-cell();
+        @include breakpoint(medium) {
+            @include xy-cell(50%);
+        }
+        
+        .image-effect {
+            @include rotate(-10);
+            border: rem-calc(10) solid $white;
+            @include shadow();
+            width: 90%;
+            @include breakpoint(small only) {
+                margin-bottom: rem-calc(70);
+            }
+        }
+        
+    }
+    .page-content {
+        @include xy-cell();
+        @include breakpoint(medium) {
+            @include xy-cell(50%);
+        }
+        
+        p {
+            font-size:rem-calc(16);
+            line-height: rem-calc(40);
+        }
+        blockquote {
+            font-size:rem-calc(30);
+        }
+    }
+}
+/** Process */
+.page-process {
+    .process-container {
+        @include xy-grid();
+        .process-item {
+            @include xy-gutters($gutter-position: bottom);
+            @include xy-cell();
+            @include breakpoint(medium) {
+                @include xy-cell(6);
+            }
+        }
+        @include breakpoint(medium) {
+            @include odd() {
+                .process-image {
+                    order: 2;
+                }
+                .process-content {
+                    order: 1;
+                }
+            }
+        }
+        .process-content {
+            h3 {
+                color: $primary-color;
+                @include margin(1);
+                @include text-transform(uppercase);
+                @include font-bold(900);
+                &:after {
+                    width: rem-calc(200);
+                    height: rem-calc(2);
+                    background-color: $secondary-color;
+                    content: '';
+                    display: block;
+                    margin-top: rem-calc(10);
+                }
+            }
+            p {
+                font-size:rem-calc(18);
+                line-height: rem-calc(38);
+                margin-top: rem-calc(30);
+            }
+        }
+    }
+}
+/** Menu **/
+.page-menu {
+    @include xy-grid();
+    padding-bottom: 0;
+    .menu-description {
+        @include xy-cell();
+        @include breakpoint(large) {
+            @include xy-cell(5);
+        }
+        p {
+            text-align: center;
+            line-height: rem-calc(50);
+        }
+    }
+    .menu-image {
+        @include xy-cell();
+        @include breakpoint(large) {
+            @include xy-cell(7);
+        }
+        @include flex-align(center, bottom);
+        @include flex();
+    }
+}
+
+/** Menu Section**/
+.our-menu {
+    background-image: url(../img/menu.jpg);
+    @include padding(3, null, 3, null);
+    position: relative;
+    background-position: center center;
+    background-attachment: scroll;
+    @include breakpoint(large) {
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    h2 {
+        color: $white;
+        @include font-bold(900);
+        @include text-transform(uppercase);
+        text-align: center;
+        font-size: rem-calc(20);
+        margin-bottom: rem-calc(40);
+        position: relative;
+        span {
+            @include display(table);
+            margin:0 auto;
+            font-size: rem-calc(30);
+        }
+    }
+    &:after {
+        content: '';
+        @include position(absolute, 0,0,0,0);
+        background-color: rgba(46,23, 15, .86);
+    }
+    .container {
+        position: relative;
+        z-index:10;
+    }
+    .menu-list {
+        @include xy-grid();
+        color:$white;
+        > div {
+            @include xy-cell();
+            @include breakpoint(medium) {
+                @include xy-cell(6);
+            }
+            h3 {
+                @include text-transform(uppercase);
+                @include font-bold(900);
+                text-align: center;
+                margin-bottom: rem-calc(40);
+            }
+        }
+    }
+}
+
+//Product list
+.product-list {
+    list-style: none;
+    margin: 0;
+    li {
+        margin-bottom: rem-calc(20);
+        @include flex();
+        @include xy-grid();
+        .product {
+            @include xy-cell(8);
+            p.name {
+                @include text-transform(uppercase);
+                @include font-bold(900);
+                font-size:rem-calc(18);
+            }
+            p.description {
+                color: $secondary-color;
+                font-size: rem-calc(16);
+            }
+        }
+        .price {
+            @include xy-cell(4);
+            p {
+                text-align: right;
+                font-size: rem-calc(30);
+                @include breakpoint(small only) {
+                    font-size: rem-calc(26);
+                }
+                @include font-bold(900);
+            }
+        }
+        p {
+            margin:0;
+        }
+    }
+}
+/** Gallery**/
+
+
+/** Contact Us **/
+.page-contact {
+    background-image:url(../img/coffee_beans.jpg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 60%;
+    @include xy-grid();
+    @include breakpoint(medium) {
+        background-size: 40%;
+    }
+    .reservation-form {
+        @include xy-cell();
+        @include breakpoint(medium) {
+            @include xy-cell(6);
+        }
+    }
+}
+.field-container {
+    
+    label {
+        color: $black;
+        font-size: rem-calc(20);
+        @include font-bold();
+        @include text-transform(uppercase);
+    }
+    input, select {
+        border: rem-calc(5) solid $primary-color;
+        height: rem-calc(50);
+    }
+    .send_btn {
+        @include font-bold();
+        @include text-transform(uppercase);
+        font-size:rem-calc(18);
+        width: 100%;
+        height: auto;
+    }
+}
+
+/** gallery **/
+
+.gallery-top {
+    margin-bottom: rem-calc(20);
+    @include breakpoint(medium) {
+        margin-bottom: rem-calc(5);
+    }
+    @include xy-grid();
+    
+    .left-content {
+        @include xy-cell(1 of 4);
+        @include breakpoint(small only) {
+            @include xy-cell(4 of 9);
+        }
+    }
+    .right-content {
+        @include xy-cell(3 of 4);
+        @include breakpoint(small only) {
+            @include xy-cell(5 of 9);
+        }
+        @include xy-grid-collapse();
+        .right-container {
+            @include xy-grid();
+                .gallery-item {
+                    @include xy-cell(4);
+                    @include breakpoint(small only) {
+                        @include xy-cell(6);
+                    }
+                    @include xy-gutters(30, padding, bottom);
+                    &.two-cols {
+                        @include xy-cell(8);
+                        @include breakpoint(small only) {
+                            @include xy-cell();
+                        }
+                    }
+                }
+        }
+                
+    }
+}
+.gallery-bottom {
+    @include xy-grid();
+    
+    > .gallery-item {
+        @include xy-cell(25%);
+        @include xy-grid-collapse();
+        @include xy-gutters(18, margin, left right);
+        &.two-cols {
+            @include xy-cell(50%);
+            @include xy-gutters(15, padding, right);
+        }
+    }
+    .right-content {
+        @include xy-cell(25%);
+        @include xy-grid-collapse();
+        @include xy-gutters(25, padding, left bottom right);
+        @include breakpoint(small only) {
+            @include xy-gutters();
+        }
+        .gallery-item {
+            margin-bottom: rem-calc(23);
+        }
+    }
+}
+.testimonials {
+    background-color: $white;
+    padding-top:rem-calc(70);
+    padding-bottom: rem-calc(70);
+    h2 {
+        margin-top: 0;
+    }
+}
+.slide-container {
+    @include xy-grid();
+    @include flex-align(center, middle );
+    .orbit {
+        background-color: $cream;
+        @include xy-cell(10);
+        border-left: rem-calc(5) solid $primary-color;
+        li {
+            
+            div {
+                @include padding(2, 4, 2, 4);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
